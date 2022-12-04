@@ -22,11 +22,11 @@ public class Address {
 
     private String street;
 
-    private long city;
+    private String city;
 
     private String state;
 
     private String country;
 
-    private String pincode;
+    private long pincode;
 }

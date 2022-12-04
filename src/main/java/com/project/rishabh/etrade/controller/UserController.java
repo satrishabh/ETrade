@@ -20,7 +20,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.saveUserDetails(user));
     }
 
-    @GetMapping("retrieve/{userId}")
+    @GetMapping("/retrieve/{userId}")
     public ResponseEntity<User> getUserDetails(@PathVariable Integer userId){
 
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUserDetails(userId));
