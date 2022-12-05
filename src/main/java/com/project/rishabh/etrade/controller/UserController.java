@@ -1,6 +1,7 @@
 package com.project.rishabh.etrade.controller;
 
-import com.project.rishabh.etrade.entity.User;
+import com.project.rishabh.etrade.dto.request.UserDto;
+import com.project.rishabh.etrade.dto.response.UserResponseDto;
 import com.project.rishabh.etrade.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,13 +16,13 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/create")
-    public ResponseEntity<User> addUserDetails(@RequestBody User user){
+    public ResponseEntity<UserResponseDto> addUserDetails(@RequestBody UserDto userDto){
 
-        return ResponseEntity.status(HttpStatus.OK).body(userService.saveUserDetails(user));
+        return ResponseEntity.status(HttpStatus.OK).body(userService.saveUserDetails(userDto));
     }
 
     @GetMapping("/retrieve/{userId}")
-    public ResponseEntity<User> getUserDetails(@PathVariable Integer userId){
+    public ResponseEntity<UserResponseDto> getUserDetails(@PathVariable Integer userId){
 
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUserDetails(userId));
     }

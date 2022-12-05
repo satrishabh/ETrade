@@ -1,18 +1,15 @@
-package com.project.rishabh.etrade.dto;
+package com.project.rishabh.etrade.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserDto {
+public class UserResponseDto {
 
     private Integer userId;
 
@@ -26,8 +23,8 @@ public class UserDto {
 
     private String email;
 
-    private BankDetailsDto bankdetails;
+    private BankDetailsResponseDto bankdetails;
 
-    private AddressDto address;
+    private AddressResponseDto address;
 
 }

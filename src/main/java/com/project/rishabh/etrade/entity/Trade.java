@@ -1,21 +1,27 @@
 package com.project.rishabh.etrade.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="trade")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "trade")
 public class Trade {
 
     @Id
     @GeneratedValue
-    @Column(name="trade_id")
+    @Column(name = "trade_id")
     private Integer tradeId;
 
-    @ManyToOne(targetEntity = User.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id",referencedColumnName = "user_id")
+    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
     private Integer unitPrice;
@@ -24,8 +30,8 @@ public class Trade {
 
     private String type;
 
-    @ManyToOne(targetEntity = Stock.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name="stock_id",referencedColumnName = "stock_id")
+    @ManyToOne(targetEntity = Stock.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "stock_id", referencedColumnName = "stock_id")
     private Stock stock;
 
 }

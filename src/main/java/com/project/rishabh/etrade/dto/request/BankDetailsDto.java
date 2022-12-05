@@ -1,4 +1,4 @@
-package com.project.rishabh.etrade.dto;
+package com.project.rishabh.etrade.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BankDetailsDto {
-
-    private Integer bankId;
 
     private Integer userId;
 

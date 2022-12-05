@@ -1,9 +1,10 @@
 package com.project.rishabh.etrade.service;
 
-import com.project.rishabh.etrade.entity.Stock;
+import com.project.rishabh.etrade.dto.request.StockDto;
+import com.project.rishabh.etrade.dto.response.StockResponseDto;
 
 public interface StockService {
-    Stock saveStockDetails(Stock stock);
+    StockResponseDto saveStockDetails(StockDto stock);
 
-    Stock getStockDetails(Integer stockId);
+    StockResponseDto getStockDetails(Integer stockId);
 }

@@ -1,17 +1,15 @@
-package com.project.rishabh.etrade.dto;
+package com.project.rishabh.etrade.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TradeDto {
+public class TradeResponseDto {
 
     private Integer tradeId;
 

@@ -1,10 +1,11 @@
 package com.project.rishabh.etrade.service;
 
-import com.project.rishabh.etrade.entity.Address;
+import com.project.rishabh.etrade.dto.request.AddressDto;
+import com.project.rishabh.etrade.dto.response.AddressResponseDto;
 
 public interface AddressService {
 
-    Address saveAddress(Address address);
+    AddressResponseDto saveAddress(AddressDto addressDto);
 
-    Address getAddress(Integer addressId);
+    AddressResponseDto getAddress(Integer addressId);
 }

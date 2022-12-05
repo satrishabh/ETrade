@@ -1,6 +1,7 @@
 package com.project.rishabh.etrade.controller;
 
-import com.project.rishabh.etrade.entity.BankDetails;
+import com.project.rishabh.etrade.dto.request.BankDetailsDto;
+import com.project.rishabh.etrade.dto.response.BankDetailsResponseDto;
 import com.project.rishabh.etrade.service.BankDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,13 +16,13 @@ public class BankDetailsController {
     private BankDetailsService bankDetailsService;
 
     @PostMapping("/create")
-    public ResponseEntity<BankDetails> saveBankDetails(@RequestBody BankDetails bankDetails) {
+    public ResponseEntity<BankDetailsResponseDto> saveBankDetails(@RequestBody BankDetailsDto bankDetailsDto) {
 
-        return ResponseEntity.status(HttpStatus.OK).body(bankDetailsService.saveBankDetails(bankDetails));
+        return ResponseEntity.status(HttpStatus.OK).body(bankDetailsService.saveBankDetails(bankDetailsDto));
     }
 
     @GetMapping("retrieve/{bankId}")
-    public ResponseEntity<BankDetails> getBankDetails(@PathVariable Integer bankId) {
+    public ResponseEntity<BankDetailsResponseDto> getBankDetails(@PathVariable Integer bankId) {
 
         return ResponseEntity.status(HttpStatus.OK).body(bankDetailsService.getBankDetails(bankId));
     }
