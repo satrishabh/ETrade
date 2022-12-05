@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -15,7 +15,7 @@ public class User {
     @Column(name = "user_id")
     private Integer userId;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Address address;
 
     private String firstName;
@@ -28,10 +28,10 @@ public class User {
 
     private String email;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private BankDetails bankdetails;
 
-    @OneToMany(targetEntity = Trade.class, cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToMany(targetEntity = Trade.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Trade> trade;
 
 }
