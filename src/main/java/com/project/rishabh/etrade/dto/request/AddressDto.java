@@ -1,4 +1,4 @@
-package com.project.rishabh.etrade.dto;
+package com.project.rishabh.etrade.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AddressDto {
 
-    private Integer addressId;
-
-    private UserDto user;
+    private Integer userId;
 
     private String houseNumber;
 

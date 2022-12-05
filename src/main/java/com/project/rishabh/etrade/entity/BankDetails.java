@@ -1,12 +1,18 @@
 package com.project.rishabh.etrade.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="user_bank")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "user_bank")
 public class BankDetails {
 
     @Id
@@ -15,7 +21,7 @@ public class BankDetails {
     private Integer bankId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id",referencedColumnName="user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
     private String accountNumber;

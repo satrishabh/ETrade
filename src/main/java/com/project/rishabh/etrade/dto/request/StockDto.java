@@ -1,7 +1,7 @@
-package com.project.rishabh.etrade.entity;
+package com.project.rishabh.etrade.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,16 +9,11 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Table(name = "stock")
-public class Stock {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class StockDto {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "stock_id")
     private Integer stockId;
 
     private String name;
@@ -29,7 +24,7 @@ public class Stock {
 
     private String exchange;
 
-    private long category;
+    private String category;
 
     private String risk;
 

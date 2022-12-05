@@ -1,6 +1,7 @@
 package com.project.rishabh.etrade.controller;
 
-import com.project.rishabh.etrade.entity.Trade;
+import com.project.rishabh.etrade.dto.request.TradeDto;
+import com.project.rishabh.etrade.dto.response.TradeResponseDto;
 import com.project.rishabh.etrade.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,13 +16,13 @@ public class TradeController {
     private TradeService tradeService;
 
     @PostMapping("/create")
-    public ResponseEntity<Trade> addTradeDetails(@RequestBody Trade trade){
+    public ResponseEntity<TradeResponseDto> addTradeDetails(@RequestBody TradeDto tradeDto) {
 
-        return ResponseEntity.status(HttpStatus.OK).body(tradeService.saveTradeDetails(trade));
+        return ResponseEntity.status(HttpStatus.OK).body(tradeService.saveTradeDetails(tradeDto));
     }
 
     @GetMapping("retrieve/{tradeId}")
-    public ResponseEntity<Trade> getTradeDetails(@PathVariable Integer tradeId){
+    public ResponseEntity<TradeResponseDto> getTradeDetails(@PathVariable Integer tradeId) {
 
         return ResponseEntity.status(HttpStatus.OK).body(tradeService.getTradeDetails(tradeId));
     }

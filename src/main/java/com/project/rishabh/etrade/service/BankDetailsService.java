@@ -1,10 +1,11 @@
 package com.project.rishabh.etrade.service;
 
-import com.project.rishabh.etrade.entity.BankDetails;
+import com.project.rishabh.etrade.dto.request.BankDetailsDto;
+import com.project.rishabh.etrade.dto.response.BankDetailsResponseDto;
 
 public interface BankDetailsService {
 
-    BankDetails saveBankDetails(BankDetails bankDetails);
+    BankDetailsResponseDto saveBankDetails(BankDetailsDto bankDetailsDto);
 
-    BankDetails getBankDetails(Integer bankId);
+    BankDetailsResponseDto getBankDetails(Integer bankId);
 }

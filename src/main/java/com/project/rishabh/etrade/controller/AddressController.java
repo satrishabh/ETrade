@@ -1,6 +1,7 @@
 package com.project.rishabh.etrade.controller;
 
-import com.project.rishabh.etrade.entity.Address;
+import com.project.rishabh.etrade.dto.request.AddressDto;
+import com.project.rishabh.etrade.dto.response.AddressResponseDto;
 import com.project.rishabh.etrade.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,13 +16,13 @@ public class AddressController {
     private AddressService addressService;
 
     @PostMapping("/create")
-    public ResponseEntity<Address> addAddress(@RequestBody Address address){
+    public ResponseEntity<AddressResponseDto> addAddress(@RequestBody AddressDto addressDto){
 
-        return ResponseEntity.status(HttpStatus.OK).body(addressService.saveAddress(address));
+        return ResponseEntity.status(HttpStatus.OK).body(addressService.saveAddress(addressDto));
     }
 
     @GetMapping("/retrieve/{addressId}")
-    public ResponseEntity<Address> getAddress(@PathVariable Integer addressId){
+    public ResponseEntity<AddressResponseDto> getAddress(@PathVariable Integer addressId){
 
         return ResponseEntity.status(HttpStatus.OK).body(addressService.getAddress(addressId));
     }

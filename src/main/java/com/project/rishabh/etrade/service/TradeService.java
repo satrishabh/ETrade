@@ -1,9 +1,10 @@
 package com.project.rishabh.etrade.service;
 
-import com.project.rishabh.etrade.entity.Trade;
+import com.project.rishabh.etrade.dto.request.TradeDto;
+import com.project.rishabh.etrade.dto.response.TradeResponseDto;
 
 public interface TradeService {
-    Trade saveTradeDetails(Trade trade);
+    TradeResponseDto saveTradeDetails(TradeDto tradeDto);
 
-    Trade getTradeDetails(Integer tradeId);
+    TradeResponseDto getTradeDetails(Integer tradeId);
 }

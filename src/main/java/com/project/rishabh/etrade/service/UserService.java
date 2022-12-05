@@ -1,10 +1,11 @@
 package com.project.rishabh.etrade.service;
 
-import com.project.rishabh.etrade.entity.User;
+import com.project.rishabh.etrade.dto.request.UserDto;
+import com.project.rishabh.etrade.dto.response.UserResponseDto;
 
 public interface UserService {
 
-    User saveUserDetails(User user);
+    UserResponseDto saveUserDetails(UserDto userDto);
 
-    User getUserDetails(Integer userId);
+    UserResponseDto getUserDetails(Integer userId);
 }

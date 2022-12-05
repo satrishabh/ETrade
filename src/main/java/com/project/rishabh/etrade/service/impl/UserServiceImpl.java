@@ -1,9 +1,13 @@
 package com.project.rishabh.etrade.service.impl;
 
+import com.project.rishabh.etrade.dto.request.UserDto;
+import com.project.rishabh.etrade.dto.response.UserResponseDto;
 import com.project.rishabh.etrade.entity.User;
+import com.project.rishabh.etrade.exception.NotFoundException;
 import com.project.rishabh.etrade.repository.UserRepository;
 import com.project.rishabh.etrade.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +20,32 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Override
-    public User saveUserDetails(User user) {
+    @Autowired
+    private ModelMapper modelMapper;
 
-        return userRepository.save(user);
+    @Override
+    public UserResponseDto saveUserDetails(UserDto userDto) {
+
+
+        Optional<User> userByEmailId = userRepository.findByEmail(userDto.getEmail());
+        if (userByEmailId.isEmpty()) {
+
+            User user = modelMapper.map(userDto, User.class);
+            user = userRepository.save(user);
+            return modelMapper.map(user, UserResponseDto.class);
+        } else {
+            throw new NotFoundException("UserId is already Present ");
+        }
     }
 
     @Override
-    public User getUserDetails(Integer userId) {
+    public UserResponseDto getUserDetails(Integer userId) {
 
-        Optional<User> user=userRepository.findById(userId);
-        return user.get();
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            return modelMapper.map(user, UserResponseDto.class);
+        } else {
+            throw new NotFoundException("userId is not Found");
+        }
     }
 }
