@@ -1,6 +1,7 @@
 package com.project.rishabh.etrade.service.impl;
 
 import com.project.rishabh.etrade.dto.request.UserDto;
+import com.project.rishabh.etrade.dto.response.AddressResponseDto;
 import com.project.rishabh.etrade.dto.response.UserResponseDto;
 import com.project.rishabh.etrade.entity.User;
 import com.project.rishabh.etrade.exception.NotFoundException;
@@ -9,6 +10,7 @@ import com.project.rishabh.etrade.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,6 +21,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    private PasswordEncoder bcryptEncoder;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -31,6 +35,7 @@ public class UserServiceImpl implements UserService {
         if (userByEmailId.isEmpty()) {
 
             User user = modelMapper.map(userDto, User.class);
+            user.setPassword(bcryptEncoder.encode(userDto.getPassword()));
             user = userRepository.save(user);
             return modelMapper.map(user, UserResponseDto.class);
         } else {
@@ -43,6 +48,8 @@ public class UserServiceImpl implements UserService {
 
         Optional<User> user = userRepository.findById(userId);
         if (user.isPresent()) {
+            UserResponseDto userResponseDto = modelMapper.map(user, UserResponseDto.class);
+            userResponseDto.setAddress(modelMapper.map(user.get().getAddress(), AddressResponseDto.class));
             return modelMapper.map(user, UserResponseDto.class);
         } else {
             throw new NotFoundException("userId is not Found");
