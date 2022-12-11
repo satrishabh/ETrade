@@ -1,4 +1,4 @@
-package com.project.rishabh.etrade.util;
+package com.project.rishabh.etrade.util.message;
 
 import lombok.Data;
 

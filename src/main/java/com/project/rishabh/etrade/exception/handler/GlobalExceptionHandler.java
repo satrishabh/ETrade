@@ -1,7 +1,7 @@
 package com.project.rishabh.etrade.exception.handler;
 
 import com.project.rishabh.etrade.exception.NotFoundException;
-import com.project.rishabh.etrade.util.ErrorResponse;
+import com.project.rishabh.etrade.util.message.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
