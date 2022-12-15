@@ -9,20 +9,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/create")
-    public ResponseEntity<UserResponseDto> addUserDetails(@RequestBody UserDto userDto){
+    @PostMapping("/signup")
+    public ResponseEntity<UserResponseDto> addUserDetails(@RequestBody UserDto userDto) {
 
         return ResponseEntity.status(HttpStatus.OK).body(userService.saveUserDetails(userDto));
     }
 
     @GetMapping("/retrieve/{userId}")
-    public ResponseEntity<UserResponseDto> getUserDetails(@PathVariable Integer userId){
+    public ResponseEntity<UserResponseDto> getUserDetails(@PathVariable Integer userId, @RequestHeader("Authorization") String authorization) {
 
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUserDetails(userId));
     }

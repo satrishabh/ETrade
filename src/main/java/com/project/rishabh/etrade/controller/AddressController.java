@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static org.springframework.http.HttpStatus.NO_CONTENT;
+
 @RestController
 @RequestMapping("/address")
 public class AddressController {
@@ -16,13 +18,26 @@ public class AddressController {
     private AddressService addressService;
 
     @PostMapping("/create")
-    public ResponseEntity<AddressResponseDto> addAddress(@RequestBody AddressDto addressDto){
+    public ResponseEntity<AddressResponseDto> addAddress(@RequestBody AddressDto addressDto) {
 
         return ResponseEntity.status(HttpStatus.OK).body(addressService.saveAddress(addressDto));
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteAddress(@PathVariable("id") Integer userId, @RequestHeader("Authorization") String authorization) {
+
+        addressService.deleteAddress(userId);
+        return new ResponseEntity<>(NO_CONTENT);
+    }
+
+    @PutMapping
+    public ResponseEntity<AddressDto> updateAddress(@PathVariable("id") Integer userId, @RequestBody AddressDto addressDto, @RequestHeader("Authorization") String authorization) {
+        return ResponseEntity.status(HttpStatus.OK).body(addressService.updateAddress(userId, addressDto));
+    }
+
+
     @GetMapping("/retrieve/{addressId}")
-    public ResponseEntity<AddressResponseDto> getAddress(@PathVariable Integer addressId){
+    public ResponseEntity<AddressResponseDto> getAddress(@PathVariable Integer addressId, @RequestHeader("Authorization") String authorization) {
 
         return ResponseEntity.status(HttpStatus.OK).body(addressService.getAddress(addressId));
     }

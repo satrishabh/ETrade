@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/bank-details")
+@RequestMapping("/bankdetails")
 public class BankDetailsController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class BankDetailsController {
     }
 
     @GetMapping("retrieve/{bankId}")
-    public ResponseEntity<BankDetailsResponseDto> getBankDetails(@PathVariable Integer bankId) {
+    public ResponseEntity<BankDetailsResponseDto> getBankDetails(@PathVariable Integer bankId, @RequestHeader("Authorization") String authorization) {
 
         return ResponseEntity.status(HttpStatus.OK).body(bankDetailsService.getBankDetails(bankId));
     }

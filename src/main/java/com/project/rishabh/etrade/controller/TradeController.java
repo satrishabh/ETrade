@@ -22,7 +22,7 @@ public class TradeController {
     }
 
     @GetMapping("retrieve/{tradeId}")
-    public ResponseEntity<TradeResponseDto> getTradeDetails(@PathVariable Integer tradeId) {
+    public ResponseEntity<TradeResponseDto> getTradeDetails(@PathVariable Integer tradeId, @RequestHeader("Authorization") String authorization) {
 
         return ResponseEntity.status(HttpStatus.OK).body(tradeService.getTradeDetails(tradeId));
     }

@@ -1,7 +1,7 @@
 package com.project.rishabh.etrade.service;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface JwtUserDetailsService {
-    UserDetails loadUserByUsername(String username);
+public interface JwtUserDetailsService extends UserDetailsService {
+
 }

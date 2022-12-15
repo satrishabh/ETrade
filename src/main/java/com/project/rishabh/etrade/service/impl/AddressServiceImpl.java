@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.project.rishabh.etrade.util.constant.ErrorMessageConstant.MSG_USER_ID_NOT_FOUND;
+
 @Service
 @RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
@@ -38,7 +40,7 @@ public class AddressServiceImpl implements AddressService {
             address.setUser(user.get());
             address = addressRepository.save(address);
             return modelMapper.map(address, AddressResponseDto.class);
-        }else {
+        } else {
             throw new NotFoundException("UserId is not Found");
         }
 
@@ -48,11 +50,32 @@ public class AddressServiceImpl implements AddressService {
     public AddressResponseDto getAddress(Integer addressId) {
 
         Optional<Address> address1 = addressRepository.findById(addressId);
-        if(address1.isPresent()){
+        if (address1.isPresent()) {
             return modelMapper.map(address1, AddressResponseDto.class);
-        }else{
+        } else {
             throw new NotFoundException("addressId is not Found");
         }
 
+    }
+
+    @Override
+    public void deleteAddress(Integer userId) {
+
+        Optional<User> user = userRepository.findById(userId);
+        user.ifPresent(value -> addressRepository.delete(value.getAddress()));
+    }
+
+    @Override
+    public AddressDto updateAddress(Integer userId, AddressDto addressDto) {
+
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            Address address = modelMapper.map(addressDto, Address.class);
+
+            addressRepository.save(address);
+            return modelMapper.map(address, AddressDto.class);
+        } else {
+            throw new NotFoundException(MSG_USER_ID_NOT_FOUND);
+        }
     }
 }

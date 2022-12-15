@@ -22,7 +22,7 @@ public class StockController {
     }
 
     @GetMapping("retrieve/{stockId}")
-    public ResponseEntity<StockResponseDto> getStockDetails(@PathVariable Integer stockId){
+    public ResponseEntity<StockResponseDto> getStockDetails(@PathVariable Integer stockId, @RequestHeader("Authorization") String authorization) {
 
         return ResponseEntity.status(HttpStatus.OK).body(stockService.getStockDetails(stockId));
     }

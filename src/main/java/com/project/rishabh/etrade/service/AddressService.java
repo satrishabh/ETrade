@@ -8,4 +8,8 @@ public interface AddressService {
     AddressResponseDto saveAddress(AddressDto addressDto);
 
     AddressResponseDto getAddress(Integer addressId);
+
+    void deleteAddress(Integer userId);
+
+    AddressDto updateAddress(Integer userId, AddressDto addressDto);
 }
