@@ -47,11 +47,11 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public AddressResponseDto getAddress(Integer addressId) {
+    public AddressResponseDto getAddress(Integer userId) {
 
-        Optional<Address> address1 = addressRepository.findById(addressId);
-        if (address1.isPresent()) {
-            return modelMapper.map(address1, AddressResponseDto.class);
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            return modelMapper.map(user.get().getAddress(), AddressResponseDto.class);
         } else {
             throw new NotFoundException("addressId is not Found");
         }

@@ -17,14 +17,7 @@ public class UserResponseDto {
 
     private String lastName;
 
-    private String Password;
-
     private long contactNumber;
 
     private String email;
-
-    private BankDetailsResponseDto bankdetails;
-
-    private AddressResponseDto address;
-
 }

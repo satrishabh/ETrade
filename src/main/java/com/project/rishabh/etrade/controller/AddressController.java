@@ -37,8 +37,8 @@ public class AddressController {
 
 
     @GetMapping("/retrieve/{addressId}")
-    public ResponseEntity<AddressResponseDto> getAddress(@PathVariable Integer addressId, @RequestHeader("Authorization") String authorization) {
+    public ResponseEntity<AddressResponseDto> getAddress(@PathVariable Integer userId, @RequestHeader("Authorization") String authorization) {
 
-        return ResponseEntity.status(HttpStatus.OK).body(addressService.getAddress(addressId));
+        return ResponseEntity.status(HttpStatus.OK).body(addressService.getAddress(userId));
     }
 }

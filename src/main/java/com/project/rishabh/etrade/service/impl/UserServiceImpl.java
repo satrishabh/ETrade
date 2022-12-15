@@ -1,7 +1,6 @@
 package com.project.rishabh.etrade.service.impl;
 
 import com.project.rishabh.etrade.dto.request.UserDto;
-import com.project.rishabh.etrade.dto.response.AddressResponseDto;
 import com.project.rishabh.etrade.dto.response.UserResponseDto;
 import com.project.rishabh.etrade.entity.User;
 import com.project.rishabh.etrade.exception.NotFoundException;
@@ -22,6 +21,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
     private PasswordEncoder bcryptEncoder;
 
     @Autowired
@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto saveUserDetails(UserDto userDto) {
-
 
         Optional<User> userByEmailId = userRepository.findByEmail(userDto.getEmail());
         if (userByEmailId.isEmpty()) {
@@ -48,8 +47,6 @@ public class UserServiceImpl implements UserService {
 
         Optional<User> user = userRepository.findById(userId);
         if (user.isPresent()) {
-            UserResponseDto userResponseDto = modelMapper.map(user, UserResponseDto.class);
-            userResponseDto.setAddress(modelMapper.map(user.get().getAddress(), AddressResponseDto.class));
             return modelMapper.map(user, UserResponseDto.class);
         } else {
             throw new NotFoundException("userId is not Found");
