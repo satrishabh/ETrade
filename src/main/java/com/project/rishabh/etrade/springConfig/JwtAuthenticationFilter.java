@@ -1,6 +1,5 @@
 package com.project.rishabh.etrade.springConfig;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtAuthenticationFilter {
 
-    @Autowired
+//    @Autowired
     private AuthenticationManager authenticationManager;
 
     public void authenticate(String username, String password) throws Exception {

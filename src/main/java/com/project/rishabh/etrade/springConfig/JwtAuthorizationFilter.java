@@ -1,6 +1,6 @@
 package com.project.rishabh.etrade.springConfig;
 
-import com.project.rishabh.etrade.service.JwtUserDetailsService;
+import com.project.rishabh.etrade.service.impl.JwtUserDetailsServiceImpl;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     @Autowired
-    private JwtUserDetailsService jwtUserDetailsService;
+    private JwtUserDetailsServiceImpl jwtUserDetailsService;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
