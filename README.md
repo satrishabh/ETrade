@@ -76,19 +76,40 @@ POST: http://localhost:8080/trade/create
 ```
 
 ## User
-GET : http://localhost:8080/user/retrieve/{tradeId}
+GET : http://localhost:8080/users/retrieve/{tradeId}
 
-POST: http://localhost:8080/user/create
+POST: localhost:8080/users/signup
+
 ```bash
 {
-    "userId": 2,
-    "address": null,
-    "firstName": "Rishabh",
+    "firstName": "Ravi",
     "lastName": "Mishra",
     "contactNumber": 8888888888,
-    "email": "mr.x@gmail.com",
-    "bankdetails": null,
-    "trade": [],
-    "password": null
+    "email": "ravi@gmail.com",
+    "password": "123kjhdcbsdjhc",
+    "address": {
+        "houseNumber": "23222",
+        "street": "gomyi nagar",
+        "city": "Lucknow",
+        "state": "Uttar Pradesh",
+        "country": "India",
+        "pincode": 272175
+    },
+    "bankdetails": {
+        "accountNumber": "1414141412",
+        "accountType": "saving",
+        "bankName": "ydfc",
+        "savingAmount": 70000,
+        "ifscCode": "YDID0007876"
+    }
+}
+```
+
+PUT: localhost:8080/users/signin
+
+```bash
+{
+"username": "ravi@gmail.com",
+"password": "123kjhdcbsdjhc"
 }
 ```
